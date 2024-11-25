@@ -23,7 +23,15 @@ import {
 import Settings from './Settings';
 
 export default function Dashboard() {
-  const { userData, cravingLogs, logCraving, calculateTimeMetrics, calculateDetailedMetrics, resetAllData } = useSmokingData();
+  const { 
+    userData, 
+    cravingLogs, 
+    logCraving, 
+    calculateTimeMetrics, 
+    calculateDetailedMetrics, 
+    resetAllData,
+    setIsInitialized
+  } = useSmokingData();
   const [showCravingManager, setShowCravingManager] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showBreathingExercise, setShowBreathingExercise] = useState(false);
@@ -144,10 +152,10 @@ export default function Dashboard() {
   ];
 
   const handleReset = () => {
-    // Use the resetAllData function from the hook
     resetAllData();
-    // Close the settings modal
     setShowSettings(false);
+    // Force a page refresh to restart the app
+    window.location.reload();
   };
 
   return (

@@ -14,15 +14,10 @@ export default function Settings({ onClose, onReset }: Props) {
 
   const handleReset = () => {
     // Clear all local storage data
-    localStorage.removeItem('smokingData');
-    localStorage.removeItem('cravingLogs');
-    localStorage.removeItem('achievements');
+    localStorage.clear();
     
     // Call the onReset prop to update parent state
     onReset();
-    
-    // Close the modal
-    onClose();
   };
 
   return (

@@ -186,20 +186,17 @@ export const useSmokingData = () => {
   };
 
   const resetAllData = () => {
-    // Clear all localStorage items
-    Object.values(STORAGE_KEYS).forEach(key => {
-      localStorage.removeItem(key);
-    });
-
-    // Reset state with current timestamp for new start
-    const freshData = {
-      ...DEFAULT_USER_DATA,
-      startDate: new Date().toISOString() // Set new start time
-    };
+    // Clear local storage
+    localStorage.removeItem('smokingData');
+    localStorage.removeItem('cravingLogs');
+    localStorage.removeItem('achievements');
     
-    setUserData(freshData);
+    // Reset all state
+    setUserData(DEFAULT_USER_DATA);
     setCravingLogs([]);
     setAchievements([]);
+    
+    // Important: Reset the initialization flag
     setIsInitialized(false);
   };
 
